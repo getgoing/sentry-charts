@@ -198,7 +198,6 @@ sentry:
     volumeMounts: []
 
   ingestConsumer:
-    replicas: 1
     # concurrency: 4
     env: []
     resources: {}
@@ -212,13 +211,28 @@ sentry:
 
     # it's better to use prometheus adapter and scale based on
     # the size of the rabbitmq queue
-    autoscaling:
-      enabled: false
-      minReplicas: 1
-      maxReplicas: 3
-      targetCPUUtilizationPercentage: 50
     sidecars: []
     volumes: []
+    events:
+      replicas: 1
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 3
+    attachments:
+      replicas: 1
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 3
+        targetCPUUtilizationPercentage: 50
+    transactions:
+      replicas: 1
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 3
+        targetCPUUtilizationPercentage: 50
 
     # volumeMounts:
     #   - mountPath: /dev/shm
@@ -514,7 +528,6 @@ sentry:
     volumes: []
     # noStrictOffsetReset: false
     # volumeMounts: []
-
 
   postProcessForwardErrors:
     replicas: 1
@@ -1059,7 +1072,8 @@ hooks:
     # tolerations: []
     # volumes: []
     # volumeMounts: []
-  snubaMigrate: {}
+  snubaMigrate:
+    {}
     # podLabels: []
     # volumes: []
     # volumeMounts: []
@@ -1270,7 +1284,8 @@ filestore:
       ## be used
       existingClaim: ""
 
-  gcs: {}
+  gcs:
+    {}
     ## Point this at a pre-configured secret containing a service account. The resulting
     ## secret will be mounted at /var/run/secrets/google
     # secretName:
@@ -1576,7 +1591,8 @@ rabbitmq:
   persistence:
     enabled: true
   resources: {}
-  memoryHighWatermark: {}
+  memoryHighWatermark:
+    {}
     # enabled: true
     # type: relative
     # value: 0.4
@@ -1702,7 +1718,6 @@ metrics:
     # honorLabels: true
 
 revisionHistoryLimit: 10
-
 # dnsPolicy: "ClusterFirst"
 # dnsConfig:
 #   nameservers: []

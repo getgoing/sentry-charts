@@ -23,8 +23,8 @@ spec:
       app: {{ template "sentry.fullname" . }}
       release: "{{ .Release.Name }}"
       role: ingest-consumer
-{{- if not .Values.sentry.ingestConsumer.autoscaling.enabled }}
-  replicas: {{ .Values.sentry.ingestConsumer.replicas }}
+{{- if not .Values.sentry.ingestConsumer.events.autoscaling.enabled }}
+  replicas: {{ .Values.sentry.ingestConsumer.events.replicas }}
 {{- end }}
   template:
     metadata:
