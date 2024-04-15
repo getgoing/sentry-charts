@@ -200,7 +200,6 @@ sentry:
   ingestConsumer:
     # concurrency: 4
     env: []
-    resources: {}
     affinity: {}
     nodeSelector: {}
     securityContext: {}
@@ -219,6 +218,7 @@ sentry:
         enabled: false
         minReplicas: 1
         maxReplicas: 3
+      resources: {}
     attachments:
       replicas: 1
       autoscaling:
@@ -226,6 +226,7 @@ sentry:
         minReplicas: 1
         maxReplicas: 3
         targetCPUUtilizationPercentage: 50
+      resources: {}
     transactions:
       replicas: 1
       autoscaling:
@@ -233,6 +234,7 @@ sentry:
         minReplicas: 1
         maxReplicas: 3
         targetCPUUtilizationPercentage: 50
+      resources: {}
 
     # volumeMounts:
     #   - mountPath: /dev/shm

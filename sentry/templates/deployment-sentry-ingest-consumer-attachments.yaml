@@ -110,7 +110,7 @@ spec:
 {{ toYaml .Values.sentry.ingestConsumer.volumeMounts | indent 8 }}
 {{- end }}
         resources:
-{{ toYaml .Values.sentry.ingestConsumer.resources | indent 12 }}
+{{ toYaml .Values.sentry.ingestConsumer.attachments.resources | indent 12 }}
 {{- if .Values.sentry.ingestConsumer.containerSecurityContext }}
         securityContext:
 {{ toYaml .Values.sentry.ingestConsumer.containerSecurityContext | indent 12 }}
