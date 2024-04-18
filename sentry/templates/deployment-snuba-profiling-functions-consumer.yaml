@@ -72,7 +72,8 @@ spec:
       - name: {{ .Chart.Name }}-snuba
         image: "{{ template "snuba.image" . }}"
         imagePullPolicy: {{ default "IfNotPresent" .Values.images.snuba.pullPolicy }}
-        command:
+        command: ["/usr/src/snuba/custom-entrypoint.sh"]
+        args:
           - "snuba"
           - "consumer"
           - "--storage"
