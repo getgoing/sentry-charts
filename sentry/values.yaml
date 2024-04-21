@@ -1318,6 +1318,7 @@ config:
     # No YAML relay config given
   web:
     httpKeepalive: 15
+    workers: 3
 
 clickhouse:
   enabled: true
