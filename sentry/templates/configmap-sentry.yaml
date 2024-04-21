@@ -292,7 +292,7 @@ data:
         "http-keepalive": {{ .Values.config.web.httpKeepalive }},
         "http-chunked-input": True,
         # the number of web workers
-        'workers': 3,
+        'workers': {{ .Values.config.web.workers }},
         # Turn off memory reporting
         "memory-report": False,
         # Some stuff so uwsgi will cycle workers sensibly
