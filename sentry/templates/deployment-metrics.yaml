@@ -23,7 +23,7 @@ spec:
         checksum/sentryConfPy: {{ .Values.config.sentryConfPy | sha256sum }}
         checksum/config.yaml: {{ include (print $.Template.BasePath "/configmap-sentry.yaml") . | sha256sum }}
         {{- if .Values.sentry.web.annotations }}
-{{ toYaml .Values.metrics.annotations | indent 8 }}
+{{ toYaml .Values.metrics.podAnnotations | indent 8 }}
         {{- end }}
       labels:
         app: {{ template "sentry.fullname" . }}-metrics
